@@ -1,0 +1,93 @@
+:rootdir: ../../..
+:github-readme: {rootdir}/README.adoc
+:srcdir: {rootdir}/src/
+:listing-caption: Listing
+:revdate: {project-builddate}
+:revnumber: {project-version}
+
+include::{github-readme}[tags=vardef]
+
+:projectpage: https://github.com/{gh-repo-owner}/{gh-repo-name}
+
+include::{github-readme}[tags=header]
+
+== URLs
+
+* link:{homepage}[Project home] (this page)
+* link:{projectpage}[GitHub project]
+* link:{issues}[Issue tracker]
+
+TIP: Do you want to improve this page? Please git-link:self[edit it on GitHub, edit].
+
+== Lorem ipsum
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a facilisis metus. In et sagittis augue. Aenean accumsan tempor augue id venenatis. Integer et venenatis ante. Nullam eu orci varius, accumsan ante eget, vulputate turpis. Nam fermentum ut enim et mattis. Morbi mattis varius libero. Mauris pellentesque sodales odio quis ultricies. Sed placerat nisl et ultrices varius. Sed a purus consectetur, varius felis nec, vestibulum mi. In dictum aliquet eros non lobortis.
+
+Nullam nulla leo, fermentum quis malesuada vitae, placerat feugiat urna. Suspendisse cursus iaculis hendrerit. Mauris pulvinar elit non odio euismod, eu sagittis mi fringilla. Nunc dapibus, leo ut vestibulum viverra, arcu elit volutpat augue, non molestie dolor lacus id odio. Mauris vitae molestie mauris. Donec imperdiet orci ut viverra congue. Donec massa neque, malesuada quis odio vitae, convallis rutrum nibh. Proin porttitor, leo et consectetur volutpat, justo neque condimentum ante, non scelerisque arcu augue id lacus. Suspendisse malesuada erat eget mattis imperdiet. Fusce eu eros vitae ante placerat feugiat. Maecenas iaculis nisi in tristique venenatis.
+
+Quisque sit amet placerat dolor, a euismod mi. Vestibulum accumsan risus velit, vel placerat magna porta at. Mauris efficitur est sed lobortis ullamcorper. Aliquam ut congue felis, in eleifend ligula. Pellentesque ultrices, est vel rhoncus commodo, orci lacus sodales sapien, at tempus augue erat id diam. Nunc gravida est vel nulla laoreet commodo. Cras eget convallis erat.
+
+== Source Code
+
+As for any java project, the source code of the plugin is available in the git-link:src/[src/] folder.
+
+=== Build
+
+This project is using gradle.
+
+Command to build the sources locally:
+
+----
+./gradlew build
+----
+
+Command to deploy to your local maven repository:
+
+----
+./gradlew publishToMavenLocal
+----
+
+Command to build the documentation page:
+
+----
+./gradlew asciidoctor
+----
+
+The output of this command is an HTML page located at `<git repo root>/build/docs/html5/index.html`.
+
+==== For project maintainers
+
+`signing.gnupg.keyName` and `signing.gnupg.passphrase` are expected to be set in your local `gradle.properties` file to be able to sign.
+
+Command to upload the documentation page on GitHub pages:
+
+----
+./gradlew gitPublishPush
+----
+
+Command to perform a release:
+
+----
+./gradlew release -Prelease.useAutomaticVersion=true
+----
+
+==== Using ssh-agent
+
+Some tasks requires to push into the distant git repository (release task or updating the `gh-pages` branch).
+If they are failing with errors like this:
+----
+org.eclipse.jgit.api.errors.TransportException: ... Permission denied (publickey).
+---- 
+
+Then `ssh-agent` can be used.
+----
+eval `ssh-agent -s`
+ssh-add ~/.ssh/id_rsa
+----
+(link:https://superuser.com/a/990447/[source] for this approach)
+
+
+include::{github-readme}[tags=contact-section]
+
+include::{github-readme}[tags=license-section]
+
