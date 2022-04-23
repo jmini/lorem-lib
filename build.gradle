@@ -187,7 +187,7 @@ task checkLastVersionValue {
     }
 }
 
-task updateLastVersionValue {
+def updateLastVersionValueTask = tasks.register('updateLastVersionValue') {
     doLast {
         def propertiesFile = file('gradle.properties')
         def content = propertiesFile.text
@@ -198,6 +198,6 @@ task updateLastVersionValue {
 
 model {
     tasks.unSnapshotVersion {
-        dependsOn ':updateLastVersionValue'
+        dependsOn updateLastVersionValueTask
     }
 }
