@@ -71,7 +71,7 @@ publishing {
         mavenJava(MavenPublication) {
             pom {
                 name = 'Lorem lib'
-                description = 'Libraty to order paths'
+                description = 'Library Lorem lib'
                 packaging = 'jar'
                 url = 'https://' + "$githubRepositoryOwner" + '.github.io/' + "$githubRepositoryName" + '/'
                 licenses {
