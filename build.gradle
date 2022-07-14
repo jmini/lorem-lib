@@ -33,7 +33,7 @@ java {
 }
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 signing {
