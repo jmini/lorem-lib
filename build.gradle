@@ -22,7 +22,8 @@ wrapper {
     gradleVersion = '7.3.3'
 }
 
-group = 'fr.jmini.utils'
+String groupId = 'fr.jmini.utils'
+group = groupId
 
 java {
     withJavadocJar()
@@ -109,6 +110,8 @@ asciidoctor {
     outputDir = file('build/docs/html5')
     attributes = ['revdate'             : "${buildDate()}",
                   'project-version'     : "$version",
+                  'maven-group-id'      : "$groupId",
+                  'maven-artifact-id'   : "${project.name}",
                   'last-stable-version' : "$lastVersion",
                   'attribute-missing'   : 'warn',
                   'source-highlighter'  : 'coderay',
